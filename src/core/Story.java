@@ -151,6 +151,53 @@ public class Story {
 
     }
 
+    public void crossroad() {
+
+        ui.mainTextArea.setText("Вы стоите на перекрестке. \n\nКуда вы хотите пойти?");
+        ui.choice1.setText("Назад к вратам");
+        ui.choice2.setText("На юг");
+        ui.choice3.setText("На запад");
+        ui.choice4.setText("На восток");
+
+        game.playerLocation1 = "townGate";
+        game.playerLocation2 = "south";
+        game.playerLocation3 = "west";
+        game.playerLocation4 = "east";
+
+    }
+
+    public void south() {
+
+        if (isKilled) {
+
+            ui.mainTextArea.setText("Здесь больше никого нет.");
+            ui.choice1.setText("Уйти");
+            ui.choice2.setText("");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+            game.playerLocation1 = "crossroad";
+            game.playerLocation2 = "";
+            game.playerLocation3 = "";
+            game.playerLocation4 = "";
+
+        } else {
+
+            bandit = new Bandit_DefaultBandit();
+
+            ui.mainTextArea.setText("Вы наткнулись на лагерь бандитов. В темноте они пока вас не заметили. \n\n Что вы хотите сделать?");
+            ui.choice1.setText("Напасть");
+            ui.choice2.setText("Уйти");
+            ui.choice3.setText("");
+            ui.choice4.setText("");
+
+            game.playerLocation1 = "fight";
+            game.playerLocation2 = "crossroad";
+            game.playerLocation3 = "";
+            game.playerLocation4 = "";
+
+        }
+    }
+
     public void getDagger() {
 
         if (daggerFound) {
@@ -290,60 +337,6 @@ public class Story {
 
     }
 
-    public void toMainMenu() {
-
-        defaultInventory();
-        tm.showMainScreen();
-
-    }
-
-    public void crossroad() {
-
-        ui.mainTextArea.setText("Вы стоите на перекрестке. \n\nКуда вы хотите пойти?");
-        ui.choice1.setText("Назад к вратам");
-        ui.choice2.setText("На юг");
-        ui.choice3.setText("На запад");
-        ui.choice4.setText("На восток");
-
-        game.playerLocation1 = "townGate";
-        game.playerLocation2 = "south";
-        game.playerLocation3 = "west";
-        game.playerLocation4 = "east";
-
-    }
-
-    public void south() {
-
-        if (isKilled) {
-
-            ui.mainTextArea.setText("Здесь больше никого нет.");
-            ui.choice1.setText("Уйти");
-            ui.choice2.setText("");
-            ui.choice3.setText("");
-            ui.choice4.setText("");
-            game.playerLocation1 = "crossroad";
-            game.playerLocation2 = "";
-            game.playerLocation3 = "";
-            game.playerLocation4 = "";
-
-        } else {
-
-            bandit = new Bandit_DefaultBandit();
-
-            ui.mainTextArea.setText("Вы наткнулись на лагерь бандитов. В темноте они пока вас не заметили. \n\n Что вы хотите сделать?");
-            ui.choice1.setText("Напасть");
-            ui.choice2.setText("Уйти");
-            ui.choice3.setText("");
-            ui.choice4.setText("");
-
-            game.playerLocation1 = "fight";
-            game.playerLocation2 = "crossroad";
-            game.playerLocation3 = "";
-            game.playerLocation4 = "";
-
-        }
-    }
-
     public void west() {
 
         ui.mainTextArea.setText("У обочины дороги вы заметили тело умершего путника. \n\n Что вы хотите сделать?");
@@ -387,5 +380,12 @@ public class Story {
         game.playerLocation2 = "";
         game.playerLocation3 = "";
         game.playerLocation4 = "";
+    }
+
+    public void toMainMenu() {
+
+        defaultInventory();
+        tm.showMainScreen();
+
     }
 }
