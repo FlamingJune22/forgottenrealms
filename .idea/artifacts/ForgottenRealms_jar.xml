@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="ForgottenRealms:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/ForgottenRealms_jar</output-path>
+    <root id="archive" name="ForgottenRealms.jar">
+      <element id="module-output" name="ForgottenRealms" />
+    </root>
+  </artifact>
+</component>
