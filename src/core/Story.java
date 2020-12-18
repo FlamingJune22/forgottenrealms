@@ -249,6 +249,8 @@ public class Story {
         isKilled = true;
         player.playerCloak = new Cloak_CloakOfEndurance();
         cloakFound = true;
+        player.hp += player.playerCloak.buff;
+        ui.hpNumberLabel.setText(""+ player.hp);
 
         ui.mainTextArea.setText("Вы победили бандита. \nС его тела вы сняли зачарованный плащ. \n\n(Вы получили Плащ Выносливости +1)");
         ui.choice1.setText("Уйти");
@@ -361,7 +363,7 @@ public class Story {
 
         if (isDepleted) {
 
-            ui.mainTextArea.setText("Источник истощен. Вы больше не можете восстановить здоровье.");
+            ui.mainTextArea.setText("Вы больше не можете помолиться.");
             ui.choice1.setText("Уйти");
             ui.choice2.setText("");
             ui.choice3.setText("");
